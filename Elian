@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caja de Comentarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #comment-form {
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        #comments-container {
+            max-width: 600px;
+        }
+
+        .comment {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Caja de Comentarios</h1>
+
+    <!-- Formulario para agregar comentarios -->
+    <div id="comment-form">
+        <h2>Añadir Comentario</h2>
+        <form id="add-comment-form">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" required>
+            
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" required>
+            
+            <label for="comment">Comentario:</label>
+            <textarea id="comment" required></textarea>
+            
+            <button type="button" onclick="addComment()">Añadir Comentario</button>
+        </form>
+    </div>
+
+    <!-- Contenedor de comentarios -->
+    <div id="comments-container">
+        <h2>Comentarios</h2>
+        <div id="comments-list"></div>
+    </div>
+
+    <script>
+        // Función para agregar un comentario
+        function addComment() {
+            // Obtener valores del formulario
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var comment = document.getElementById("comment").value;
+
+            // Crear el elemento de comentario
+            var commentElement = document.createElement("div");
+            commentElement.className = "comment";
+            commentElement.innerHTML = "<strong>" + name + " (" + email + "):</strong><br>" + comment;
+
+            // Agregar el comentario a la lista
+            document.getElementById("comments-list").appendChild(commentElement);
+
+            // Limpiar el formulario
+            document.getElementById("add-comment-form").reset();
+        }
+    </script>
+</body>
+</html>
